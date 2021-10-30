@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "categoria")
 public class Categoria implements Serializable{
 
 	private static final long serialVersionUID = 1L;
@@ -26,7 +28,7 @@ public class Categoria implements Serializable{
 
 	public Categoria() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Categoria(Integer id, String nome, String descricao) {
