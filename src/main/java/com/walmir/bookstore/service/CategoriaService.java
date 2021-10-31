@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.walmir.bookstore.domain.Categoria;
@@ -22,10 +23,11 @@ public class CategoriaService {
 		return obj.orElseThrow(() -> new ObjectNotFoundException(
 				"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName()));
 	}
-	
-	public List<Categoria> findAll(){
+
+	public List<Categoria> findAll() {
 		return catRepository.findAll();
 	}
+
 	public Categoria create(Categoria obj) {
 		obj.setId(null);
 		return catRepository.save(obj);
@@ -40,7 +42,10 @@ public class CategoriaService {
 
 	public void delete(Integer id) {
 		findById(id);
-		catRepository.deleteById(id);
-		
+		try {
+			catRepository.deleteById(id);
+		} catch (DataIntegrityViolationException e) {
+			throw new com.walmir.bookstore.exceptions.DataIntegrityViolationException("Categoria não pode ser deletada! Possui Livros associados.");
+		}
 	}
 }
