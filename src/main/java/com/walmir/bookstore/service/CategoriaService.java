@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walmir.bookstore.domain.Categoria;
+import com.walmir.bookstore.dtos.CategoriaDto;
 import com.walmir.bookstore.exceptions.ObjectNotFoundException;
 import com.walmir.bookstore.repositories.CategoriaRepository;
 
@@ -27,6 +28,13 @@ public class CategoriaService {
 	}
 	public Categoria create(Categoria obj) {
 		obj.setId(null);
+		return catRepository.save(obj);
+	}
+
+	public Categoria update(Integer id, CategoriaDto objDto) {
+		Categoria obj = findById(id);
+		obj.setNome(objDto.getNome());
+		obj.setDescricao(objDto.getDescricao());
 		return catRepository.save(obj);
 	}
 }
