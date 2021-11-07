@@ -20,7 +20,7 @@ public class DBService {
 
 	public void instanciaBaseDeDados() {
 		
-		Categoria cat1 = new Categoria(null, "Informática", "Livros de TI");
+		/*Categoria cat1 = new Categoria(null, "Informática", "Livros de TI");
 		Categoria cat2 = new Categoria(null, "Ficção científica", "Livros de Ficção");
 		Categoria cat3 = new Categoria(null, "Autoajuda", "Livros de Autoajuda");
 		Categoria cat4 = new Categoria(null, "Teste", "Categoria teste");
@@ -36,7 +36,7 @@ public class DBService {
 		cat3.getLivros().addAll(Arrays.asList(l3));
 
 		this.catRepository.saveAll(Arrays.asList(cat1,cat2,cat3,cat4));
-		this.livroRepository.saveAll(Arrays.asList(l1,l2,l3,l4));
+		this.livroRepository.saveAll(Arrays.asList(l1,l2,l3,l4));*/
 	}
 
 }
